@@ -1,0 +1,116 @@
+        # if message.chat.type == 'private':
+        #     convert = xtc.convert_link(message.text)
+        #     # xray = message.text.split(':')[0].lower()
+        #     rexbot.reply_to(message, f'ini Detail nya:\n{convert}', parse_mode='MarkdownV2')
+        #     echo_all(message)
+        # else: #message.chat.type == 'group':
+        #     rexbot.reply_to(message, "Gunakan Chat Private.")
+        #     echo_all(message)
+                    # Handle pilihan Clash
+            # original_message = call.message.reply_to_message.text
+            # convert = xtc.convert_link(original_message)
+            # rexbot.edit_message_text(
+            #     chat_id=call.message.chat.id,
+            #     message_id=call.message.message_id,
+            #     text=f'ini Detail nya:\n{convert}',
+            #     parse_mode='MarkdownV2'
+            # )
+
+        elif call.data == "clash":
+            markup = InlineKeyboardMarkup()
+            xl = InlineKeyboardButton("xl", callback_data="xl")
+            tsel = InlineKeyboardButton("tsel", callback_data="tsel")
+            back_button = InlineKeyboardButton("Kembali", callback_data="back")
+            
+            # Tambahkan button ke markup
+            markup.row(xl, tsel)
+            markup.row(back_button)
+            
+            # Edit pesan dengan pilihan baru
+            rexbot.edit_message_text(
+                chat_id=call.message.chat.id,
+                message_id=call.message.message_id,
+                text="Pilih format yang diinginkan:",
+                reply_markup=markup
+            )
+            
+        elif call.data == "singbox":
+            # Handle pilihan Sing-Box
+            rexbot.edit_message_text(
+                chat_id=call.message.chat.id,
+                message_id=call.message.message_id,
+                text="Format Sing-Box akan segera hadir!"
+            )
+        elif call.data == "xl":
+        
+            # Buat markup baru untuk pilihan xl
+            markup = InlineKeyboardMarkup()
+            xlvid = InlineKeyboardButton("Vidio", callback_data="xlviddio")
+            xldobel = InlineKeyboardButton("Doble Youtube", callback_data="xldobleyt")
+            xldobel = InlineKeyboardButton("", callback_data="xldobleyt")
+            back_button = InlineKeyboardButton("Kembali", callback_data="back_clash")
+            
+            # Tambahkan button ke markup
+            markup.row(xlvid, xldobel)
+            markup.row(back_button)
+
+            # Handle pilihan xl
+            rexbot.edit_message_text(
+                chat_id=call.message.chat.id,
+                message_id=call.message.message_id,
+                text="Pilih paket:", reply_markup=markup
+            )
+
+        elif call.data == "tsel":
+            # Handle pilihan tsel
+            rexbot.edit_message_text(
+                chat_id=call.message.chat.id,
+                message_id=call.message.message_id,
+                text="Format Sing-Box akan segera hadir!"
+            )
+            
+        elif call.data == "back_clash":
+            call.data == "clash"
+            # Kembali ke pilihan clash
+            markup = InlineKeyboardMarkup()
+            xl = InlineKeyboardButton("xl", callback_data="xl")
+            tsel = InlineKeyboardButton("tsel", callback_data="tsel")
+            back_button = InlineKeyboardButton("Kembali", callback_data="back")
+            
+            # Tambahkan button ke markup
+            markup.row(xl, tsel)
+            markup.row(back_button)
+            
+            # Edit pesan dengan pilihan baru
+            rexbot.edit_message_text(
+                chat_id=call.message.chat.id,
+                message_id=call.message.message_id,
+                text="Pilih format yang diinginkan:",
+                reply_markup=markup
+            )
+
+        elif call.data == "back":
+            # Kembali ke pilihan awal
+            xray_button = InlineKeyboardButton("Clash", callback_data="clash")
+            singbox_button = InlineKeyboardButton("Singbox", callback_data="singbox")
+            cancel_button = InlineKeyboardButton("Batal", callback_data="cancel_clash")
+            # Add buttons to markup
+            markup.row(xray_button, singbox_button)
+            markup.row(cancel_button)
+            
+            rexbot.edit_message_text(
+                chat_id=call.message.chat.id,
+                message_id=call.message.message_id,
+                text="Pilih opsi:",
+                reply_markup=markup
+            )
+            
+        elif call.data == "batal":
+            rexbot.edit_message_text(
+                chat_id=call.message.chat.id,
+                message_id=call.message.message_id,
+                text="Operasi dibatalkan."
+            )
+            
+        # Answer the callback query
+        rexbot.answer_callback_query(call.id)
