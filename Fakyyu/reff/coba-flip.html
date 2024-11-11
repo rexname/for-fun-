@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 40%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            transform-origin: left;
+            border-radius: 0 1rem 1rem 0;
+            transition: 2s;
+        }
+        main{
+            display: grid;
+            place-items: center;
+            transition: 2s;
+        }
+        img:hover{
+            transform: rotateY(180deg);
+        }
+        main:has(img:hover){
+            translate: 75px 0;
+        }
+        div{
+            position: absolute;
+            z-index: -1;
+            width: 40%;
+            aspect-ratio: 3/4;
+            background: floralwhite;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <img src="./df9e9ys-001f7208-c11a-4f83-aa6d-07b82507b824.png" alt="background">
+        <div>
+            <h2>Test Nama</h2>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis dolorum, quas laborum voluptate incidunt cum provident tempora maxime commodi dolore.</p>
+        </div>
+    </main>
+</body>
+</html>
